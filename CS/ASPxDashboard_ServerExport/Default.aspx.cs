@@ -40,7 +40,7 @@ namespace ASPxDashboard_ServerExport
                 string dateTimeNow = DateTime.Now.ToString("yyyyMMddHHmmss");
                 string filePath = "~/App_Data/Export/" + selectedDashboardID + "_" + dateTimeNow + ".pdf";
                 ASPxDashboardExporter exporter = new ASPxDashboardExporter(ASPxDashboard1);
-                exporter.ExportToPdf(selectedDashboardID, stream, new System.Drawing.Size(1024, 768), dashboardState, pdfOptions);
+                exporter.ExportToPdf(selectedDashboardID, stream, new System.Drawing.Size(1920, 1080), dashboardState, pdfOptions);
                 SaveFile(stream, filePath);
                 e.Result = filePath;
             }
