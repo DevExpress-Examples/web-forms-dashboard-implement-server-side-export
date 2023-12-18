@@ -1,9 +1,10 @@
-function initializeControls() {
+function onBeforeRender(s,e) {
+    var dashboardControl = s.GetDashboardControl();
     $("#buttonContainer").dxButton({
         text: "Export to PDF",
         onClick: function (param) {
-            var selectedDashboardID = webDashboard.GetDashboardId();
-            var dashboardState = webDashboard.GetDashboardState();
+            var selectedDashboardID = dashboardControl.getDashboardId();
+            var dashboardState = dashboardControl.getDashboardState();
             var parameters = selectedDashboardID + "|" + dashboardState;
             webDashboard.PerformDataCallback(parameters, null);
         }
@@ -13,7 +14,7 @@ function initializeControls() {
         dataSource: getDashboardIDs(),
         value: getDashboardIDs()[0],
         onValueChanged: function (param) {
-            webDashboard.LoadDashboard(param.value);
+            dashboardControl.loadDashboard(param.value);
         }
     });
 }
