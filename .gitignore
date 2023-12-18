@@ -3,10 +3,6 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
-# Export files
-CS/ASPxDashboard_ServerExport/App_Data/Export/
-VB/ASPxDashboard_ServerExport/App_Data/Export/
-
 # User-specific files
 *.suo
 *.user
