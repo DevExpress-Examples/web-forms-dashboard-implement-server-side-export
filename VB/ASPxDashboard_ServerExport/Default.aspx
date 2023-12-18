@@ -1,6 +1,6 @@
 <%@ Page Language="VB" AutoEventWireup="true" CodeBehind="Default.aspx.vb" Inherits="ASPxDashboard_ServerExport.Default" %>
 
-<%@ Register Assembly="DevExpress.Dashboard.v17.1.Web, Version=17.1.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" 
+<%@ Register Assembly="DevExpress.Dashboard.v23.1.Web.WebForms, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" 
     Namespace="DevExpress.DashboardWeb" TagPrefix="dx" %>
 
 <!DOCTYPE html>
@@ -17,10 +17,11 @@
     <div style="position: absolute; left: 0; right: 0; top:50px; bottom:0;">
         <dx:ASPxDashboard ID="ASPxDashboard1" runat="server" Width="100%" Height="100%" WorkingMode="Viewer"
             ClientInstanceName="webDashboard"
-            ClientSideEvents-Init="function(s, e) { initializeControls(); }"
-            ClientSideEvents-CustomDataCallback="function(s, e) { dashboardExportedSuccess(e); }"
             OnCustomDataCallback="ASPxDashboard1_CustomDataCallback" 
             OnCustomJSProperties="ASPxDashboard1_CustomJSProperties">
+             <ClientSideEvents 
+                 BeforeRender="function(s, e) { onBeforeRender(s,e); }"
+                 CustomDataCallback="function(s, e) { dashboardExportedSuccess(e); }"/>  
             </dx:ASPxDashboard>
     </div>
     </form>
