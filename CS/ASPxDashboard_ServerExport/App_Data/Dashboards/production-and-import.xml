@@ -1,9 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Dashboard>
-  <Title Text="Dashboard 2" />
+  <Title Text="Production and Import" />
   <DataSources>
-    <SqlDataSource ComponentName="DataSource1">
-      <Name>Countries</Name>
+    <SqlDataSource Name="Countries" ComponentName="DataSource1">
       <Connection Name="energyStatisticsConnection" FromAppConfig="true" />
       <Query Type="SelectQuery" Name="Countries">
         <Tables>
@@ -19,11 +18,11 @@
           <Column Table="Countries" Name="Import" />
         </Columns>
       </Query>
-      <ConnectionOptions CloseConnection="true" CommandTimeout="0" />
+      <ConnectionOptions CloseConnection="true" />
     </SqlDataSource>
   </DataSources>
   <Items>
-    <PieMap ComponentName="pieMapDashboardItem1" Name="PieMap 1" DataSource="DataSource1" DataMember="Countries" ShapefileArea="Europe" ShapeTitleAttributeName="NAME">
+    <PieMap ComponentName="pieMapDashboardItem1" Name="Production &amp; Import" DataSource="DataSource1" DataMember="Countries" ShapefileArea="Europe" ShapeTitleAttributeName="NAME">
       <InteractivityOptions MasterFilterMode="Multiple" />
       <DataItems>
         <Dimension DataMember="Latitude" DefaultId="DataItem0" />
@@ -63,6 +62,7 @@
       </GridColumns>
       <SparklineArgument DefaultId="DataItem3" />
       <GridOptions />
+      <ColumnFilterOptions />
     </Grid>
   </Items>
   <LayoutTree>

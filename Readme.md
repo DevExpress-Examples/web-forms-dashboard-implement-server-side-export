@@ -6,12 +6,16 @@
 
 # BI Dashboard for Web Forms - How to implement server-side export
 
-This example demonstrates how to export a dashboard displayed in [ASPxDashboard](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.ASPxDashboard) on the server side using the [ASPxDashboardExporter](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.ASPxDashboardExporter) class. The following API is used to implement this functionality:
+This example shows how to export a dashboard displayed in [ASPxDashboard](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.ASPxDashboard) on the server. When you click **Export to PDF**, the [ASPxDashboardExporter](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.ASPxDashboardExporter) exports the displayed dashboard with the specified dashboard state to your desktop.
 
-- The [ASPxDashboard.CustomJSProperties](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.ASPxDashboard.CustomJSProperties) server-side event is used to pass information about available dashboards to the client side.
-- The [DashboardControl.loadDashboard](https://docs.devexpress.com/Dashboard/js-DevExpress.Dashboard.DashboardControl?p=netframework#js_devexpress_dashboard_dashboardcontrol_loaddashboard_dashboardid_) method opens a selected dashboard.  
-- The [ASPxClientDashboard.PerformDataCallback](https://docs.devexpress.com/Dashboard/js-DevExpress.Dashboard.Web.WebForms.ASPxClientDashboard?p=netframework#js_aspxclientdashboard_performdatacallback_parameter_oncallback_) method is used to pass the dashboard identifier and state to the server. On the server, the [ASPxDashboard.CustomDataCallback](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.ASPxDashboard.CustomDataCallback?p=netframework) event is used to obtain and parse these values.  
-- [ASPxDashboardExporter.ExportToPdf](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.WebDashboardExporter.ExportToPdf.overloads) is used to export the selected dashboard with the state passed from the client.
+![](images/export.png)
+
+The following API is used to implement this functionality:
+
+- The [ASPxDashboard.CustomJSProperties](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.ASPxDashboard.CustomJSProperties) server-side event is used to pass information about available dashboards to the client side.
+- The [DashboardControl.loadDashboard](https://docs.devexpress.com/Dashboard/js-DevExpress.Dashboard.DashboardControl?p=netframework#js_devexpress_dashboard_dashboardcontrol_loaddashboard_dashboardid_) method opens a selected dashboard.  
+- The [ASPxClientDashboard.PerformDataCallback](https://docs.devexpress.com/Dashboard/js-DevExpress.Dashboard.Web.WebForms.ASPxClientDashboard?p=netframework#js_aspxclientdashboard_performdatacallback_parameter_oncallback_) method is used to pass the dashboard identifier and state to the server. On the server, the [ASPxDashboard.CustomDataCallback](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.ASPxDashboard.CustomDataCallback?p=netframework) event is used to obtain and parse these values.  
+- [ASPxDashboardExporter.ExportToPdf](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.WebDashboardExporter.ExportToPdf.overloads) is used to export the selected dashboard with the state passed from the client.
 
 ## Files to Review
 
