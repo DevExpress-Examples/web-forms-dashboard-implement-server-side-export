@@ -25,18 +25,42 @@ Namespace ASPxDashboard_ServerExport
             e.Properties.Add("cpGetDashboardIDs", dashboardIDs)
         End Sub
 
+        'Protected Sub ASPxDashboard1_CustomDataCallback(ByVal sender As Object, ByVal e As DevExpress.Web.CustomDataCallbackEventArgs)
+        '    Using stream As MemoryStream = New MemoryStream()
+        '        Dim selectedDashboardID As String = e.Parameter.Split("|"c)(0)
+        '        Dim dashboardStateJson As String = e.Parameter.Split("|"c)(1)
+        '        Dim dashboardState As DashboardState = New DashboardState()
+        '        dashboardState.LoadFromJson(dashboardStateJson)
+        '        Dim pdfOptions As DashboardPdfExportOptions = New DashboardPdfExportOptions()
+        '        pdfOptions.ExportFilters = True
+        '        pdfOptions.DashboardStatePosition = DashboardStateExportPosition.Below
+        '        Dim dateTimeNow As String = Date.Now.ToString("yyyyMMddHHmmss")
+        '        Dim filePath As String = "~/App_Data/Export/" & selectedDashboardID & "_" & dateTimeNow & ".pdf"
+        '        Dim exporter As ASPxDashboardExporter = New ASPxDashboardExporter(ASPxDashboard1)
+        '        exporter.ExportToPdf(selectedDashboardID, stream, New System.Drawing.Size(1920, 1080), dashboardState, pdfOptions)
+        '        SaveFile(stream, filePath)
+        '        e.Result = filePath
+        '    End Using
+        'End Sub
         Protected Sub ASPxDashboard1_CustomDataCallback(ByVal sender As Object, ByVal e As DevExpress.Web.CustomDataCallbackEventArgs)
-            Using stream As MemoryStream = New MemoryStream()
+            Using stream As New MemoryStream()
                 Dim selectedDashboardID As String = e.Parameter.Split("|"c)(0)
                 Dim dashboardStateJson As String = e.Parameter.Split("|"c)(1)
-                Dim dashboardState As DashboardState = New DashboardState()
+                Dim dashboardState As New DashboardState()
                 dashboardState.LoadFromJson(dashboardStateJson)
-                Dim pdfOptions As DashboardPdfExportOptions = New DashboardPdfExportOptions()
+
+                Dim pdfOptions As New DashboardPdfExportOptions()
                 pdfOptions.ExportFilters = True
                 pdfOptions.DashboardStatePosition = DashboardStateExportPosition.Below
+
+                Dim serverPath As String = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
+                If Not Directory.Exists(serverPath) Then
+                    Directory.CreateDirectory(serverPath)
+                End If
+
                 Dim dateTimeNow As String = Date.Now.ToString("yyyyMMddHHmmss")
-                Dim filePath As String = "~/App_Data/Export/" & selectedDashboardID & "_" & dateTimeNow & ".pdf"
-                Dim exporter As ASPxDashboardExporter = New ASPxDashboardExporter(ASPxDashboard1)
+                Dim filePath As String = serverPath & "\" & selectedDashboardID & "_" & dateTimeNow & ".pdf"
+                Dim exporter As New ASPxDashboardExporter(ASPxDashboard1)
                 exporter.ExportToPdf(selectedDashboardID, stream, New System.Drawing.Size(1920, 1080), dashboardState, pdfOptions)
                 SaveFile(stream, filePath)
                 e.Result = filePath
@@ -44,7 +68,7 @@ Namespace ASPxDashboard_ServerExport
         End Sub
 
         Private Sub SaveFile(ByVal stream As MemoryStream, ByVal path As String)
-            Dim fileStream = File.Create(Server.MapPath(path))
+            Dim fileStream = File.Create(path)
             stream.WriteTo(fileStream)
             fileStream.Close()
         End Sub

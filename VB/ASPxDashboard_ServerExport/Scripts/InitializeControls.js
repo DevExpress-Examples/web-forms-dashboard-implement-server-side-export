@@ -1,4 +1,4 @@
-function onBeforeRender(s,e) {
+function onBeforeRender(s, e) {
     var dashboardControl = s.GetDashboardControl();
     $("#buttonContainer").dxButton({
         text: "Export to PDF",
