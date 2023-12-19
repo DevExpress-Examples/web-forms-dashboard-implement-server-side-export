@@ -32,3 +32,4 @@ The following API is used to implement this functionality:
 
 - [BI Dashboard for MVC - How to implement server-side export](https://github.com/DevExpress-Examples/asp-net-mvc-dashboard-implement-server-side-export)
 - [BI Dashboard for Web Forms - How to export Web Dashboard into PDF with different filter values on different pages](https://github.com/DevExpress-Examples/web-forms-dashboard-pdf-export-with-filter-values-on-different-pages)
+- [BI Dashboard for Web Forms - How to add custom information to the exported dashboard](https://github.com/DevExpress-Examples/web-forms-dashboard-add-custom-information-to-exported-dashboard)
